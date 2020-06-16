@@ -1,0 +1,304 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script id="allmobilize" charset="utf-8" src="/style/js/allmobilize.min.js"></script>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate" media="handheld"/>
+    <!-- end 云适配 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>前端开发全国-职位搜索-拉勾网-最专业的互联网招聘平台</title>
+    <meta property="qc:admins" content="23635710066417756375"/>
+    <meta content="前端开发招聘  全国地区招聘 紫色医疗招聘前端开发,月薪:10k-20k,要求:本科及以上学历,3-5年工作经验。职位诱惑：借移动医疗大势享受坐直升飞机的职场发展 公司规模:15-50人移动互联网 ,健康医疗类公司招聘信息汇总  最新最热门互联网行业招聘信息，尽在拉勾网"
+          name="description">
+    <meta content="前端开发招聘,全国地区前端开发招聘,紫色医疗招聘前端开发,移动互联网 类公司招聘信息汇总,健康医疗类公司招聘信息汇总,拉勾招聘,拉勾网,互联网招聘" name="keywords">
+    <meta name="baidu-site-verification" content="QIQ6KC1oZ6"/>
+
+
+    <script type="text/javascript">
+        var ctx = "h";
+        console.log(1);
+    </script>
+    <link rel="Shortcut Icon" href="http://www.lagou.com/h/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/style/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/external.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/popup.css"/>
+    <link rel="stylesheet" type="text/css" href="/jquery.sPage.css">
+    <script src="/style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/js/jquery.lib.min.js"></script>
+    <script src="/style/js/ajaxfileupload.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/js/additional-methods.js"></script>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="/style/js/excanvas.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var youdao_conv_id = 271546;
+    </script>
+    <script type="text/javascript" src="/style/js/conv.js"></script>
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script src="/layui/layui.js"></script>
+</head>
+<body>
+<div id="body">
+    <div id="header">
+        <div class="wrapper">
+            <a href="/index" class="logo">
+                <img src="/style/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘"/>
+            </a>
+            <ul class="reset" id="navheader">
+                <li class="current"><a href="/index">首页</a></li>
+                <li><a href="/api/user/jianli">我的简历</a></li>
+            </ul>
+            <dl class="collapsible_menu">
+                <dt>
+                    <span th:text="${session.user.email}">&nbsp;</span>
+                    <span class="red dn" id="noticeDot-0"></span>
+                    <i></i>
+                </dt>
+                <dd><a rel="nofollow" href="/api/user/myresume">我投递的简历</a></dd><dd><a rel="nofollow" href="javascript:void(0);" onclick="repwd();">修改密码</a></dd>
+                <dd class="logout"><a rel="nofollow" href="/loginout">退出</a></dd>
+            </dl>
+        </div>
+    </div><!-- end #header -->
+    <div id="container">
+
+        <div class="sidebar">
+            <div id="options" class="greybg">
+            </div>
+
+            <!-- QQ群 -->
+            <div class="qq_group">
+                加入<span>前端</span>QQ群
+                <div class="f18">跟同行聊聊</div>
+                <p>160541839</p>
+            </div>
+
+            <!-- 对外合作广告位  -->
+            <a href="http://www.w3cplus.com/" target="_blank" class="partnersAd">
+                <img src="/style/images/w3cplus.png" width="230" height="80" alt="w3cplus"/>
+            </a>
+            <a href="" target="_blank" class="partnersAd">
+                <img src="/style/images/jquery_school.jpg" width="230" height="80" alt="JQ学校"/>
+            </a>
+            <a href="http://linux.cn/" target="_blank" class="partnersAd">
+                <img src="/style/images/linuxcn.png" width="230" height="80" alt="Linux中文社区"/>
+            </a>
+            <a href="http://zt.zhubajie.com/zt/makesite? utm_source=lagou.com&utm_medium=referral&utm_campaign=BD-yl"
+               target="_blank" class="partnersAd">
+                <img src="/style/images/zhubajie.jpg" width="230" height="80" alt="猪八戒"/>
+            </a>
+            <a href="http://www.imooc.com" target="_blank" class="partnersAd">
+                <img src="/style/images/muke.jpg" width="230" height="80" alt="幕课网"/>
+            </a>
+
+        </div>
+
+        <div class="content">
+            <div id="search_box">
+                <form id="sForm" name="searchForm" action="" method="get">
+                    <ul id="searchType">
+                        <li data-searchtype="1" class="type_selected">职位</li>
+                    </ul>
+                    <div class="searchtype_arrow"></div>
+                    <input type="text" id="search_input" name="kd" tabindex="1" value="" />
+                    <input type="submit" id="search_button" value="搜索"/>
+                </form>
+            </div>
+            <style>
+                .ui-autocomplete {
+                    width: 488px;
+                    background: #fafafa !important;
+                    position: relative;
+                    z-index: 10;
+                    border: 2px solid #91cebe;
+                }
+
+                .ui-autocomplete-category {
+                    font-size: 16px;
+                    color: #999;
+                    width: 50px;
+                    position: absolute;
+                    z-index: 11;
+                    right: 0px; /*top: 6px; */
+                    text-align: center;
+                    border-top: 1px dashed #e5e5e5;
+                    padding: 5px 0;
+                }
+
+                .ui-menu-item {
+                    *width: 439px;
+                    vertical-align: middle;
+                    position: relative;
+                    margin: 0px;
+                    margin-right: 50px !important;
+                    background: #fff;
+                    border-right: 1px dashed #ededed;
+                }
+
+                .ui-menu-item a {
+                    display: block;
+                    overflow: hidden;
+                }
+            </style>
+            <script type="text/javascript" src="/style/js/search.min.js"></script>
+            <div class="breakline"></div>
+
+            <div id="tip_didi" class="dn">
+                <span>亲，“嘀嘀打车”已更名为“滴滴打车”了哦，我们已帮您自动跳转~</span>
+                <a href="javascript:;">我知道了</a>
+            </div>
+
+            <ul id = "temp" class="hot_pos reset">
+
+            </ul>
+
+            <style type="text/css">
+                .num{
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                }
+                .demo{
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+            </style>
+
+
+            <div id="myPage1" class="demo"></div>
+
+            </div>
+
+        <script src="/jquery.sPage.js"></script>
+        <script>
+            function repwd(){
+                layui.use(['table','util','form'], function(){
+                    var table = layui.table,
+                        util=layui.util,
+                        form=layui.form;
+                    layer.open({
+                        type: 2,
+                        title: '修改密码',
+                        maxmin: true,
+                        area: ['850px', '500px'],
+                        content: '/api/user/repwdview' //这里content是一个普通的String
+                    });
+                });
+            }
+
+            var list;
+            var total;
+            $.ajax({
+                url: '/api/position/page?kd=[[${kd}]]',
+                contentType: "application/json;charset=UTF-8",//发送数据的格式
+                data: {},
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+
+                    list = data;
+                    total = data.length;
+                    var c = "";
+                    for (var i = 0; i < data.length; i++) {
+                        if(i % 2 == 1){
+                            c = "odd";
+                        }else{
+                            c = "";
+                        }
+                        $('#temp').append("<li class='clearfix " + c + "' >" +
+                            "<div class='hot_pos_l'>" +
+                            "<div class='mb10'>" +
+                            "<a href=/api/position/info?id="+data[i].position.id + '&cid='+ data[i].position.cid +" target='_blank'>" + data[i].position.cname + "</a>" +
+                            "&nbsp;" +
+                            "<span class='c9'>"+data[i].position.paddress+"</span>" +
+                            "</div>" +
+                            "<span><em class='c7'>月薪： </em>"+data[i].position.salary+"</span>" +
+                            "<span><em class='c7'>经验：</em>"+data[i].position.experience+"</span>" +
+                            "<span><em class='c7'>最低学历： </em>"+data[i].position.education+"</span>" +
+                            "<br/>" +
+                            "<span><em class='c7'>职位名称：</em>"+data[i].position.cname+"</span>" +
+                            "<br/>" +
+                            "<span>发布时间："+data[i].position.showtime+"</span>" +
+                            "</div>" +
+                            "<div class='hot_pos_r'>" +
+                            "<div class='mb10 recompany'><span>"+data[i].companyDetil.cname+"<span></div>" +
+                            "<span><em class='c7'>领域：</em> "+data[i].companyDetil.industry+"</span>" +
+                            "<br/>" +
+                            "<span><em class='c7'>阶段：</em>"+data[i].companyDetil.develop+"</span>" +
+                            "<span><em class='c7'>规模：</em>"+data[i].companyDetil.scale+"</span>" +
+                            "<br/>" +
+                            "<span><em class='c7'>公司描述：</em>"+data[i].companyDetil.descr+"</span>" +
+                            "</div>" +
+                            "</li>");
+                    }
+
+                    $("#myPage1").sPage({
+                        page:1,
+                        pageSize:10,
+                        total:total,
+                        prevPage:"上一页",
+                        nextPage:"下一页",
+                        backFun:function(page){
+                            $("#temp").empty();
+                            for (var i = (page-1)*10; i < page*10; i++) {
+                                var temp = "";
+                                if(i % 2 == 1){
+                                    temp = "odd";
+                                }else{
+                                    temp = "";
+                                }
+                                $("#temp").append(
+                                    "<li class='clearfix'" + temp + ">" +
+                                    "<div class='hot_pos_l'>" +
+                                    "<div class='mb10'>" +
+                                    "<a href=/api/position/info?id="+list[i].position.id + "&cid="+ list[i].position.cid + " target='_blank'>" + list[i].position.cname + "</a>" +
+                                    "&nbsp;" +
+                                    "<span class='c9'>[" + list[i].position.paddress + "]</span>" +
+                                    "</div>" +
+                                    "<span><em class='c7'>月薪：</em>" + list[i].position.salary + "</span>" +
+                                    "<span><em class='c7'>经验：</em> " + list[i].position.experience + "</span>" +
+                                    "<span><em class='c7'>最低学历： </em>" + list[i].position.education + "</span>" +
+                                    "<br/>" +
+                                    "<span><em class='c7'>职位名称：</em>" + list[i].position.cname + "</span>" +
+                                    "<br/>" +
+                                    "<span>" + list[i].position.showtime + "</span>" +
+                                    "</div>" +
+                                    "<div class='hot_pos_r'>" +
+                                    "<div class='mb10'><a href='' target='_self'>" + list[i].companyDetil.cname + "</a></div>" +
+                                    "<span><em class='c7'>领域： </em>" + list[i].companyDetil.industry + "</span>" +
+                                    "<br/>" +
+                                    "<span><em class='c7'>阶段： </em>" + list[i].companyDetil.develop + "</span>" +
+                                    "<span><em class='c7'>规模： </em>" + list[i].companyDetil.scale + "</span>" +
+                                    "</div>" +
+                                    "</li>"
+                                );
+                            }
+                        }
+                    });
+                }
+            });
+
+        </script>
+
+        <div class="clear"></div>
+        <input type="hidden" id="resubmitToken" value=""/>
+        <a id="backtop" title="回到顶部" rel="nofollow"></a>
+    </div><!-- end #container -->
+</div><!-- end #body -->
+<div id="footer">
+    <div class="wrapper">
+        <a href="h/about.html" target="_blank" rel="nofollow">联系我们</a>
+        <a href="h/af/zhaopin.html" target="_blank">互联网公司导航</a>
+        <a href="http://e.weibo.com/lagou720" target="_blank" rel="nofollow">微博</a>
+        <a class="footer_qr" href="javascript:void(0)" rel="nofollow">微信<i></i></a>
+        <div class="copyright">&copy;2013-2014 Lagou <a target="_blank"  href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14023790号-2</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/style/js/core.min.js"></script>
+<script type="text/javascript" src="/style/js/popup.min.js"></script>
+
+<!--  -->
+
+</body>
+</html>

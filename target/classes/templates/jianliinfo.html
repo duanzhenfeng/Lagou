@@ -1,0 +1,250 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type = "text/javascript" async = "" src = "/style/js/conversion.js" ></script>
+    <script src="/style/js/allmobilize.min.js" charset="utf-8" id="allmobilize"></script>
+    <style type="text/css"></style>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+    <link media="handheld" rel="alternate">
+    <!-- end 云适配 -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>我的简历-拉勾网-最专业的互联网招聘平台</title>
+    <meta content="23635710066417756375" property="qc:admins">
+    <meta name="description" content="拉勾网是3W旗下的互联网领域垂直招聘网站,互联网职业机会尽在拉勾网">
+    <meta name="keywords"
+          content="拉勾,拉勾网,拉勾招聘,拉钩, 拉钩网 ,互联网招聘,拉勾互联网招聘, 移动互联网招聘, 垂直互联网招聘, 微信招聘, 微博招聘, 拉勾官网, 拉勾百科,跳槽, 高薪职位, 互联网圈子, IT招聘, 职场招聘, 猎头招聘,O2O招聘, LBS招聘, 社交招聘, 校园招聘, 校招,社会招聘,社招">
+    <meta content="QIQ6KC1oZ6" name="baidu-site-verification">
+
+    <!-- <div class="web_root"  style="display:none">h</div> -->
+    <script type="text/javascript">
+        var ctx = "h";
+        console.log(1);
+    </script>
+    <link href="h/images/favicon.ico" rel="Shortcut Icon">
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/external.min.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/popup.css" type="text/css" rel="stylesheet">
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/style/js/jquery.1.10.1.min.js"></script>
+    <script src="/style/js/jquery.lib.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/js/ajaxfileupload.js"></script>
+    <script src="/style/js/additional-methods.js" type="text/javascript"></script>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="/style/js/excanvas.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var youdao_conv_id = 271546;
+    </script>
+    <script src="/style/js/conv.js" type="text/javascript"></script>
+    <script src="/style/js/ajaxCross.json" charset="UTF-8"></script>
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script src="/layui/layui.js"></script>
+</head>
+<body>
+<div id="body">
+    <div id="header">
+        <div class="wrapper">
+            <a class="logo" href="index.html">
+                <img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="/style/images/logo.png">
+            </a>
+            <ul id="navheader" class="reset">
+                <li ><a href="/api/company/companyinfo">公司</a></li>
+                <li class="current"><a href="/api/company/index06">发布职位</a></li>
+            </ul>
+            <dl class="collapsible_menu">
+                <dt>
+                    <span th:value="${session.user.email}">&nbsp;</span>
+                    <span class="red dn" id="noticeDot-1"></span>
+                    <i></i>
+                </dt>
+               <!-- <dd><a href="accountBind.html">帐号设置</a></dd>-->
+                <dd><a rel="nofollow" href="javascript:void(0);" onclick="repwd();">修改密码</a></dd>
+                <dd class="logout"><a rel="nofollow" href="/loginout">退出</a></dd>
+            </dl>
+        </div>
+    </div><!-- end #header -->
+    <style>
+        form h2{
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            background: url(img/profile_square.png) 0 3px no-repeat;
+            padding-left: 20px;
+        }
+        input.layui-input-inline{
+            margin-right: 90px;
+        }
+        div.layui-input-block{
+            margin-left: 20px !important;
+        }
+    </style>
+    <div id="container">
+
+        <div class="clearfix">
+            <form class="layui-form layui-form-pane" action="">
+                <h2>基本信息</h2>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" th:value="${resume.username}"  id="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="sex" value="1" title="男"  th:checked="${resume.sex == 1 }" th:if="${resume.sex == 1 }">
+                        <input type="radio" name="sex" value="0" title="女"  th:checked="${resume.sex == 0 }" th:if="${resume.sex == 0 }">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                        <legend>头像</legend>
+                    </fieldset>
+                    <div class="layui-upload">
+                        <input type="hidden" id="pic" name="image" th:value="${resume.image}">
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="preview">
+                                <img width="100px" height="100px" th:src="'/ws/'+${resume.image}"class="layui-upload-img">
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学历</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="education"  th:value="${resume.education}" id="education" lay-verify="required" placeholder="请输入：如：本科、硕士" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">工作经验</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="experience" th:value="${resume.experience}" id="experience"  placeholder="请输入：如：3年" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="phone" th:value="${resume.phone}" id="phone" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" th:value="${resume.email}" id="email"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <h2>工作经历</h2>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" >
+                        <textarea name="experiencedesc" th:value="${resume.experiencedesc}" th:text="${resume.experiencedesc}" id="experiencedesc" placeholder="职位描述" class="layui-textarea" style="width:590px;height:100px;margin-top:10px;"></textarea>
+                    </div>
+                </div>
+                <h2>专业技能</h2>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" >
+                        <textarea name="skill" id="skill" th:value="${resume.skill}" th:text="${resume.skill}" placeholder="职位描述" class="layui-textarea" style="width:590px;height:100px;margin-top:10px;"></textarea>
+                    </div>
+                </div>
+                <h2>校园经历</h2>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" >
+                        <textarea name="school" id="school" th:value="${resume.school}" th:text="${resume.school}" placeholder="职位描述" class="layui-textarea" style="width:590px;height:100px;margin-top:10px;"></textarea>
+                    </div>
+                </div>
+                <h2>自我描述</h2>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" >
+                        <textarea name="self" id="self" th:value="${resume.self}" th:text="${resume.self}" placeholder="职位描述" class="layui-textarea" style="width:590px;height:100px;margin-top:10px;"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="text-align:center;">
+                    <input class="layui-btn layui-btn-warm" lay-filter="*" type="button" value="保存" lay-submit />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div><!-- end #body -->
+<div id="footer">
+    <div class="wrapper">
+        <a rel="nofollow" target="_blank" href="h/about.html">联系我们</a>
+        <a target="_blank" href="h/af/zhaopin.html">互联网公司导航</a>
+        <a rel="nofollow" target="_blank" href="http://e.weibo.com/lagou720">微博</a>
+        <a rel="nofollow" href="javascript:void(0)" class="footer_qr">微信<i></i></a>
+        <div class="copyright">&copy;2018-2019 Lagou <a
+                href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action"
+                target="_blank">京ICP备14023790号-2</a></div>
+    </div>
+</div>
+
+<script src="/style/js/core.min.js" type="text/javascript"></script>
+<script src="/style/js/popup.min.js" type="text/javascript"></script>
+<script src="/layui/layui.js"></script>
+<script>
+    function repwd(){
+        layui.use(['table','util','form'], function(){
+            var table = layui.table,
+                util=layui.util,
+                form=layui.form;
+            layer.open({
+                type: 2,
+                title: '修改密码',
+                maxmin: true,
+                area: ['850px', '500px'],
+                content: '/api/company/repwdview' //这里content是一个普通的String
+            });
+        });
+    }
+    layui.use(['form', 'upload'], function () {
+        var form = layui.form,
+            upload = layui.upload;
+        form.on('submit(*)', function(data){
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            var user=data.field;
+            var userInfo=JSON.stringify(user);
+            $.ajax({
+                url: '/api/user/saveresume',
+                contentType : "application/json;charset=UTF-8",//发送数据的格式
+                data:userInfo,
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    if(data=="1"){
+                        layer.msg("添加成功！");
+                    }else{
+                        layer.msg("添加失败！");
+                    }
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+</script>
+<div id="cboxOverlay" style="display: none;"></div>
+<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
+    <div id="cboxWrapper">
+        <div>
+            <div id="cboxTopLeft" style="float: left;"></div>
+            <div id="cboxTopCenter" style="float: left;"></div>
+            <div id="cboxTopRight" style="float: left;"></div>
+        </div>
+        <div style="clear: left;">
+            <div id="cboxMiddleLeft" style="float: left;"></div>
+            <div id="cboxContent" style="float: left;">
+                <div id="cboxTitle" style="float: left;"></div>
+                <div id="cboxCurrent" style="float: left;"></div>
+                <button type="button" id="cboxPrevious"></button>
+                <button type="button" id="cboxNext"></button>
+                <button id="cboxSlideshow"></button>
+                <div id="cboxLoadingOverlay" style="float: left;"></div>
+                <div id="cboxLoadingGraphic" style="float: left;"></div>
+            </div>
+            <div id="cboxMiddleRight" style="float: left;"></div>
+        </div>
+        <div style="clear: left;">
+            <div id="cboxBottomLeft" style="float: left;"></div>
+            <div id="cboxBottomCenter" style="float: left;"></div>
+            <div id="cboxBottomRight" style="float: left;"></div>
+        </div>
+    </div>
+    <div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
+</div>
+</body>
+</html>

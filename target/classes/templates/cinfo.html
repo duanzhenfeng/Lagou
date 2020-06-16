@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <style type="text/css">
+        .layui-form-item{
+            margin-left:50px;
+        }
+    </style>
+    <title>添加管理员信息</title>
+</head>
+<body>
+<form class="layui-form layui-form-pane" action="" style="padding-top: 50px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司全称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="cname"  id="cname" th:value="${companyinfo.cname}" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司简称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" id="name" th:value="${companyinfo.name}" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>公司logo</legend>
+        </fieldset>
+
+        <div class="layui-upload">
+            <input type="hidden" id="pic" name="image" th:value="${companyinfo.image}">
+            <button type="button" class="layui-btn" id="image">公司logo</button>
+
+            <input class="layui-btn layui-btn-warm" type="button" value="开始上传" id="upload-pic"/>
+            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                预览图：
+                <div class="layui-upload-list" id="preview">
+                    <img width="100px" height="100px" th:src="'/ws/'+${companyinfo.image}"class="layui-upload-img">
+                </div>
+            </blockquote>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司网址</label>
+        <div class="layui-input-inline">
+            <input type="text" name="website" id="website" th:value="${companyinfo.website}"  placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">所在城市</label>
+        <div class="layui-input-inline">
+            <select name="city" id="city">
+                <option value="">请选择</option>
+                <option value="全国" th:selected="${companyinfo.city == '全国'?'selected':''}">全国</option>
+                <option value="北京" th:selected="${companyinfo.city == '北京'?'selected':''}">北京</option>
+                <option value="上海" th:selected="${companyinfo.city == '上海'?'selected':''}">上海</option>
+                <option value="广州" th:selected="${companyinfo.city == '广州'?'selected':''}">广州</option>
+                <option value="成都" th:selected="${companyinfo.city == '成都'?'selected':''}">成都</option>
+                <option value="深圳" th:selected="${companyinfo.city == '深圳'?'selected':''}">深圳</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">行业领域</label>
+        <div class="layui-input-inline">
+            <select name="industry" id="industry">
+                <option value="">请选择</option>
+                <option value="互联网" th:selected="${companyinfo.industry == '互联网'?'selected':''}">移动互联网</option>
+                <option value="金融" th:selected="${companyinfo.industry == '金融'?'selected':''}">金融</option>
+                <option value="健康医疗" th:selected="${companyinfo.industry == '健康医疗'?'selected':''}">健康医疗</option>
+                <option value="生活服务" th:selected="${companyinfo.industry == '生活服务'?'selected':''}">生活服务</option>
+                <option value="电子科技" th:selected="${companyinfo.industry == '电子科技'?'selected':''}">电子科技</option>
+                <option value="广告营销" th:selected="${companyinfo.industry == '广告营销'?'selected':''}">广告营销</option>
+                <option value="教育" th:selected="${companyinfo.industry == '教育'?'selected':''}">教育</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司规模</label>
+        <div class="layui-input-inline">
+            <select name="scale" id="scale">
+                <option value="">请选择</option>
+                <option value="少于15人" th:selected="${companyinfo.scale == '少于15人'?'selected':''}">少于15人</option>
+                <option value="51-50人" th:selected="${companyinfo.scale == '51-50人'?'selected':''}">51-50人</option>
+                <option value="50-150人" th:selected="${companyinfo.scale == '50-150人'?'selected':''}">50-150人</option>
+                <option value="150-500人" th:selected="${companyinfo.scale == '150-500人'?'selected':''}">150-500人</option>
+                <option value="500-2000人" th:selected="${companyinfo.scale == '500-2000人'?'selected':''}">500-2000人</option>
+                <option value="2000人以上" th:selected="${companyinfo.scale == '2000人以上'?'selected':''}">2000人以上</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">发展阶段</label>
+        <div class="layui-input-inline">
+            <select name="develop" id="develop">
+                <option value="">请选择</option>
+                <option value="种子轮" th:selected="${companyinfo.develop == '种子轮'?'selected':''}">未融资</option>
+                <option value="天使投资（AI）" th:selected="${companyinfo.develop == '天使投资（AI）'?'selected':''}">天使轮</option>
+                <option value="A轮融资" th:selected="${companyinfo.develop == 'A轮融资'?'selected':''}">A轮</option>
+                <option value="B轮融资" th:selected="${companyinfo.develop == 'B轮融资'?'selected':''}">B轮</option>
+                <option value="C轮融资" th:selected="${companyinfo.develop == 'C轮融资'?'selected':''}">C轮</option>
+                <option value="D轮融资以上" th:selected="${companyinfo.develop == 'D轮融资以上'?'selected':''}">D轮以上</option>
+                <option value="上市公司" th:selected="${companyinfo.develop == '上市公司'?'selected':''}">上市公司</option>
+                <option value="不需要融资" th:selected="${companyinfo.develop == '不需要融资'?'selected':''}">不需要融资</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司表述</label>
+        <div class="layui-input-block" >
+            <textarea name="descr" id="descr" placeholder="公司表述" th:text="${companyinfo.descr}" class="layui-textarea" style="width:545px;height:100px;margin-top:10px;"></textarea>
+
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="text-align:center;">
+    </div>
+</form>
+<script src="/layui/layui.js"></script>
+<script src="/images/jquery.js"></script>
+<script type="text/javascript">
+    layui.use(['form','upload'], function() {
+        var form = layui.form,
+            upload = layui.upload;
+    });
+</script>
+</body>
+</html>

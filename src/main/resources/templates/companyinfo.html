@@ -1,0 +1,305 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript" async="" src="/style/js/conversion.js"></script>
+    <script src="/style/js/allmobilize.min.js" charset="utf-8" id="allmobilize"></script>
+    <style type="text/css"></style>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+    <link media="handheld" rel="alternate">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <!-- end 云适配 -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>基本信息-招聘服务-拉勾网-最专业的互联网招聘平台</title>
+    <meta content="23635710066417756375" property="qc:admins">
+    <meta name="description" content="拉勾网是3W旗下的互联网领域垂直招聘网站,互联网职业机会尽在拉勾网">
+    <meta name="keywords"
+          content="拉勾,拉勾网,拉勾招聘,拉钩, 拉钩网 ,互联网招聘,拉勾互联网招聘, 移动互联网招聘, 垂直互联网招聘, 微信招聘, 微博招聘, 拉勾官网, 拉勾百科,跳槽, 高薪职位, 互联网圈子, IT招聘, 职场招聘, 猎头招聘,O2O招聘, LBS招聘, 社交招聘, 校园招聘, 校招,社会招聘,社招">
+    <meta content="QIQ6KC1oZ6" name="baidu-site-verification">
+
+    <!-- <div class="web_root"  style="display:none">http://www.lagou.com</div> -->
+    <script type="text/javascript">
+        var ctx = "http://www.lagou.com";
+        console.log(1);
+    </script>
+    <link href="http://www.lagou.com/images/favicon.ico" rel="Shortcut Icon">
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/external.min.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/popup.css" type="text/css" rel="stylesheet">
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/style/js/jquery.1.10.1.min.js"></script>
+    <script src="/style/js/jquery.lib.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/js/ajaxfileupload.js"></script>
+    <script src="/style/js/additional-methods.js" type="text/javascript"></script>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="/style/js/excanvas.js"></script>
+
+    <![endif]-->
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script src="/layui/layui.js"></script>
+    <script type="text/javascript">
+        var youdao_conv_id = 271546;
+    </script>
+    <script src="/style/js/conv.js" type="text/javascript"></script>
+    <script src="/style/js/ajaxCross.json" charset="UTF-8"></script>
+</head>
+<body>
+<div id="body">
+    <div id="header">
+        <div class="wrapper">
+            <a class="logo" href="index.html">
+                <img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="/style/images/logo.png">
+            </a>
+            <ul id="navheader" class="reset">
+                <li class="current"><a href="#">公司</a></li>
+                <li><a href="/api/company/index06">发布职位</a></li>
+            </ul>
+            <dl class="collapsible_menu">
+                <dt>
+                    <span th:text="${session.user.email}">&nbsp;</span>
+                    <span class="red dn" id="noticeDot-1"></span>
+                    <i></i>
+                </dt>
+                <dd><a rel="nofollow" href="javascript:void(0);" onclick="repwd();">修改密码</a></dd>
+                <dd class="logout"><a rel="nofollow" href="/loginout">退出</a></dd>
+            </dl>
+        </div>
+    </div><!-- end #header -->
+    <div id="container">
+
+        <div style="" id="stepTip">
+
+        </div>
+        <div class="content_mid">
+            <dl class="c_section c_section_mid">
+                <dt>
+                    <h2><em></em>填写公司信息</h2>
+                </dt>
+                <dd>
+                    <form class="layui-form layui-form-pane" action="" style="padding-top: 50px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司全称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="cname"  id="cname" th:value="${companyinfo.cname}" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司简称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name" id="name" th:value="${companyinfo.name}" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>公司logo</legend>
+                            </fieldset>
+
+                            <div class="layui-upload">
+                                <input type="hidden" id="pic" name="image" th:value="${companyinfo.image}">
+                                <button type="button" class="layui-btn" id="image">公司logo</button>
+
+                                <input class="layui-btn layui-btn-warm" type="button" value="开始上传" id="upload-pic"/>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="preview">
+                                        <img width="100px" height="100px" th:src="'/ws/'+${companyinfo.image}"class="layui-upload-img">
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司网址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="website" id="website" th:value="'https://'+${companyinfo.website}"  placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">所在城市</label>
+                            <div class="layui-input-inline">
+                                <select name="city" id="city">
+                                    <option value="">请选择</option>
+                                    <option value="全国" th:selected="${companyinfo.city == '全国'?'selected':''}">全国</option>
+                                    <option value="北京" th:selected="${companyinfo.city == '北京'?'selected':''}">北京</option>
+                                    <option value="上海" th:selected="${companyinfo.city == '上海'?'selected':''}">上海</option>
+                                    <option value="广州" th:selected="${companyinfo.city == '广州'?'selected':''}">广州</option>
+                                    <option value="成都" th:selected="${companyinfo.city == '成都'?'selected':''}">成都</option>
+                                    <option value="深圳" th:selected="${companyinfo.city == '深圳'?'selected':''}">深圳</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">行业领域</label>
+                            <div class="layui-input-inline">
+                                <select name="industry" id="industry">
+                                    <option value="">请选择</option>
+                                    <option value="互联网" th:selected="${companyinfo.industry == '互联网'?'selected':''}">移动互联网</option>
+                                    <option value="金融" th:selected="${companyinfo.industry == '金融'?'selected':''}">金融</option>
+                                    <option value="健康医疗" th:selected="${companyinfo.industry == '健康医疗'?'selected':''}">健康医疗</option>
+                                    <option value="生活服务" th:selected="${companyinfo.industry == '生活服务'?'selected':''}">生活服务</option>
+                                    <option value="电子科技" th:selected="${companyinfo.industry == '电子科技'?'selected':''}">电子科技</option>
+                                    <option value="广告营销" th:selected="${companyinfo.industry == '广告营销'?'selected':''}">广告营销</option>
+                                    <option value="教育" th:selected="${companyinfo.industry == '教育'?'selected':''}">教育</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司规模</label>
+                            <div class="layui-input-inline">
+                                <select name="scale" id="scale">
+                                    <option value="">请选择</option>
+                                    <option value="少于15人" th:selected="${companyinfo.scale == '少于15人'?'selected':''}">少于15人</option>
+                                    <option value="51-50人" th:selected="${companyinfo.scale == '51-50人'?'selected':''}">51-50人</option>
+                                    <option value="50-150人" th:selected="${companyinfo.scale == '50-150人'?'selected':''}">50-150人</option>
+                                    <option value="150-500人" th:selected="${companyinfo.scale == '150-500人'?'selected':''}">150-500人</option>
+                                    <option value="500-2000人" th:selected="${companyinfo.scale == '500-2000人'?'selected':''}">500-2000人</option>
+                                    <option value="2000人以上" th:selected="${companyinfo.scale == '2000人以上'?'selected':''}">2000人以上</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发展阶段</label>
+                            <div class="layui-input-inline">
+                                <select name="develop" id="develop">
+                                    <option value="">请选择</option>
+                                    <option value="种子轮" th:selected="${companyinfo.develop == '种子轮'?'selected':''}">未融资</option>
+                                    <option value="天使投资（AI）" th:selected="${companyinfo.develop == '天使投资（AI）'?'selected':''}">天使轮</option>
+                                    <option value="A轮融资" th:selected="${companyinfo.develop == 'A轮融资'?'selected':''}">A轮</option>
+                                    <option value="B轮融资" th:selected="${companyinfo.develop == 'B轮融资'?'selected':''}">B轮</option>
+                                    <option value="C轮融资" th:selected="${companyinfo.develop == 'C轮融资'?'selected':''}">C轮</option>
+                                    <option value="D轮融资以上" th:selected="${companyinfo.develop == 'D轮融资以上'?'selected':''}">D轮以上</option>
+                                    <option value="上市公司" th:selected="${companyinfo.develop == '上市公司'?'selected':''}">上市公司</option>
+                                    <option value="不需要融资" th:selected="${companyinfo.develop == '不需要融资'?'selected':''}">不需要融资</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司表述</label>
+                            <div class="layui-input-block" >
+                                <textarea name="descr" id="descr" placeholder="公司表述" th:text="${companyinfo.descr}" class="layui-textarea" style="width:545px;height:100px;margin-top:10px;"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="text-align:center;">
+                            <input class="layui-btn layui-btn-warm" lay-filter="*" type="button" value="提交" lay-submit />
+                        </div>
+                    </form>
+                </dd>
+            </dl>
+        </div>
+
+        <script src="/layui/layui.js"></script>
+        <script src="/style/js/step1.min.js" type="text/javascript"></script>
+        <script>
+            function repwd(){
+                layui.use(['table','util','form'], function(){
+                    var table = layui.table,
+                        util=layui.util,
+                        form=layui.form;
+                    layer.open({
+                        type: 2,
+                        title: '修改密码',
+                        maxmin: true,
+                        area: ['850px', '500px'],
+                        content: '/api/company/repwdview' //这里content是一个普通的String
+                    });
+                });
+            }
+            layui.use(['form', 'upload'], function () {
+                var form = layui.form,
+                    upload = layui.upload;
+                upload.render({
+                    elem: '#image'
+                    , url: '/api/upload/file'
+                    , multiple: false   //代表支持多图上传
+                    , auto: false  //代表不自动上传
+                    , bindAction: '#upload-pic' //与auto:false 配合使用
+                    , before: function (obj) {
+                        //预读本地文件示例，不支持ie8
+                        obj.preview(function (index, file, result) {
+
+                            $('#preview').html("");
+                            $('#preview').append('<img width="100px" height="100px" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">');
+
+                        });
+                    }
+                    , done: function (res) {
+                        $('#pic').val(res.data);//上传图片成功，把图片名称保存在隐藏表单中
+                    }
+                });
+
+                form.on('submit(*)', function(data){
+                    console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                    var user=data.field;
+                    delete user.file;
+                    var userInfo=JSON.stringify(user);
+                    $.ajax({
+                        url: '/api/company/updatecompany',
+                        contentType : "application/json;charset=UTF-8",//发送数据的格式
+                        data:userInfo,
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data) {
+                            if(data=="1"){
+                                alert("修改成功");
+                            }else{
+                                layer.msg("添加失败！");
+                            }
+                        }
+                    });
+
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                });
+
+            });
+        </script>
+        <div class="clear"></div>
+        <a rel="nofollow" title="回到顶部" id="backtop" style="display: none;"></a>
+    </div><!-- end #container -->
+</div><!-- end #body -->
+<div id="footer">
+    <div class="wrapper">
+        <a rel="nofollow" target="_blank" href="about.html">联系我们</a>
+        <a target="_blank" href="http://www.lagou.com/af/zhaopin.html">互联网公司导航</a>
+        <a rel="nofollow" target="_blank" href="http://e.weibo.com/lagou720">微博</a>
+        <a rel="nofollow" href="javascript:void(0)" class="footer_qr">微信<i></i></a>
+        <div class="copyright">&copy;2013-2014 Lagou <a
+                href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action"
+                target="_blank">京ICP备14023790号-2</a></div>
+    </div>
+</div>
+
+<script src="/style/js/core.min.js" type="text/javascript"></script>
+<script src="/style/js/popup.min.js" type="text/javascript"></script>
+
+
+<div id="cboxOverlay" style="display: none;"></div>
+<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
+    <div id="cboxWrapper">
+        <div>
+            <div id="cboxTopLeft" style="float: left;"></div>
+            <div id="cboxTopCenter" style="float: left;"></div>
+            <div id="cboxTopRight" style="float: left;"></div>
+        </div>
+        <div style="clear: left;">
+            <div id="cboxMiddleLeft" style="float: left;"></div>
+            <div id="cboxContent" style="float: left;">
+                <div id="cboxTitle" style="float: left;"></div>
+                <div id="cboxCurrent" style="float: left;"></div>
+                <button type="button" id="cboxPrevious"></button>
+                <button type="button" id="cboxNext"></button>
+                <button id="cboxSlideshow"></button>
+                <div id="cboxLoadingOverlay" style="float: left;"></div>
+                <div id="cboxLoadingGraphic" style="float: left;"></div>
+            </div>
+            <div id="cboxMiddleRight" style="float: left;"></div>
+        </div>
+        <div style="clear: left;">
+            <div id="cboxBottomLeft" style="float: left;"></div>
+            <div id="cboxBottomCenter" style="float: left;"></div>
+            <div id="cboxBottomRight" style="float: left;"></div>
+        </div>
+    </div>
+    <div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
+</div>
+</body>
+</html>

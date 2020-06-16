@@ -1,0 +1,413 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="/style/js/allmobilize.min.js" charset="utf-8" id="allmobilize"></script>
+    <style type="text/css"></style>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+    <link media="handheld" rel="alternate">
+    <!-- end 云适配 -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>拉勾网-最专业的互联网招聘平台</title>
+    <meta content="23635710066417756375" property="qc:admins">
+    <meta name="description" content="拉勾网是3W旗下的互联网领域垂直招聘网站">
+    <meta name="keywords"
+          content="拉勾,拉勾网,拉勾招聘,拉钩, 拉钩网 ,互联网招聘,拉勾互联网招聘, 移动互联网招聘, 垂直互联网招聘, 微信招聘, 微博招聘, 拉勾官网, 拉勾百科,跳槽, 高薪职位, 互联网圈子, IT招聘, 职场招聘, 猎头招聘,O2O招聘, LBS招聘, 社交招聘, 校园招聘, 校招,社会招聘,社招">
+    <meta content="QIQ6KC1oZ6" name="baidu-site-verification">
+
+    <!-- <div class="web_root"  style="display:none">http://www.lagou.com</div> -->
+    <link href="http://www.lagou.com/images/favicon.ico" rel="Shortcut Icon">
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/external.min.css" type="text/css" rel="stylesheet">
+    <link href="/style/css/popup.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/style/js/jquery.1.10.1.min.js"></script>
+    <script src="/style/js/jquery.lib.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/style/js/ajaxfileupload.js"></script>
+    <script src="/style/js/additional-methods.js" type="text/javascript"></script>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="/style/js/excanvas.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var youdao_conv_id = 271546;
+    </script>
+    <script src="/style/js/conv.js" type="text/javascript"></script>
+    <script src="/style/js/ajaxCross.json" charset="UTF-8"></script>
+    <link href="/layui/css/layui.css" type="text/css" rel="stylesheet">
+    <script src="/layui/layui.js"></script>
+</head>
+<body>
+<link href="/style/css/jiathis_share.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/layui/css/layui.css">
+<iframe frameborder="0" style="position: fixed; display: none; opacity: 0;"></iframe>
+<div class="jiathis_style"
+     style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div>
+<div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div>
+<div id="body">
+    <div id="header">
+        <div class="wrapper">
+            <a class="logo" href="index.html">
+                <img width="229" height="43" alt="拉勾招聘-专注互联网招聘" src="/style/images/logo.png">
+            </a>
+            <ul id="navheader" class="reset">
+                <li><a href="/api/company/companyinfo">公司</a></li>
+                <li class="current"><a href="/api/company/index06">发布职位</a></li>
+            </ul>
+            <dl class="collapsible_menu">
+                <dt>
+                    <span th:text="${session.user.email}">&nbsp;</span>
+                    <span class="red dn" id="noticeDot-0"></span>
+                    <i></i>
+                </dt>
+                <dd><a rel="nofollow" href="javascript:void(0);" onclick="repwd();">修改密码</a></dd>
+                <dd class="logout"><a rel="nofollow" href="/loginout">退出</a></dd>
+            </dl>
+            </div>
+        </div>
+    <!-- end #header -->
+    <div id="container">
+
+        <div class="sidebar">
+            <a class="btn_create" href="/api/company/index06">发布新职位</a>
+            <dl class="company_center_aside">
+                <dt>我收到的简历</dt>
+                <dd>
+                    <a href="/api/company/topositionsing">待处理简历</a>
+                    <span></span>
+                </dd>
+                <dd>
+                    <a href="/api/company/topositionson">已通知面试简历</a>
+                </dd>
+                <dd>
+                    <a href="/api/company/topositionsoff">未通过简历</a>
+                </dd>
+            </dl>
+            <dl class="company_center_aside">
+                <dt>我发布的职位</dt>
+                <dd>
+                    <a href="/api/company/positions">有效职位</a>
+                </dd>
+                <dd>
+                    <a href="/api/company/unpositions">已下线职位</a>
+                </dd>
+            </dl>
+            <div class="subscribe_side mt20">
+                <div class="f14">想收到更多更好的简历？</div>
+                <div class="f18 mb10">就用拉勾招聘加速助手</div>
+                <div>咨询：<a class="f16" href="mailto:jessica@lagou.com">jessica@lagou.com</a></div>
+                <div class="f18 ti2em">010-57286512</div>
+            </div>
+            <div class="subscribe_side mt20">
+                <div class="f14">加入互联网HR交流群</div>
+                <div class="f18 mb10">跟同行聊聊</div>
+                <div class="f24">338167634</div>
+            </div>
+        </div>
+        <!-- end .sidebar -->
+        <div class="content">
+            <dl class="company_center_content">
+                <dt>
+                    <h1>
+                        <em></em>
+                        发布新职位
+                    </h1>
+                </dt>
+                <dd>
+					<form class="layui-form layui-form-pane" action="">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">所属部门</label>
+                            <div class="layui-input-inline">
+                                <select name="branch" id="branch"  >
+                                    <option value="">所属部门</option>
+                                    <option value="技术部">技术部</option>
+                                    <option value="销售部">产品部</option>
+                                    <option value="研发部">设计部</option>
+                                    <option value="人事部">市场&销售部</option>
+                                    <option value="行政部">职能部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">职位类别</label>
+                            <div class="layui-input-inline">
+                                <select name="c1" id = "c1" lay-filter="c1">
+                                    <option value="">职位类别</option>
+                                    <option value="技术">技术</option>
+                                    <option value="产品">产品</option>
+                                    <option value="设计">设计</option>
+                                    <option value="市场&销售">市场&销售</option>
+                                    <option value="职能">职能</option>
+                                </select>
+                            </div>
+                            <div class="layui-input-inline">
+                                <select name="cname" id="cname">
+                                    <option value="">职位名称</option>
+                                </select>
+                            </div>
+                            </div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">月薪范围</label>
+							<div class="layui-input-inline">
+								<input type="text" name="salarymin" id="salarymin"  placeholder="例：最低 5" autocomplete="off"    class="layui-input">
+							</div>
+                            <div class="layui-input-inline">
+                                <input type="text" name="salarymax" id="salarymax"  placeholder="例：最高 10" autocomplete="off" class="layui-input">
+                            </div>
+						</div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">工作经验</label>
+                            <div class="layui-input-inline">
+                                <select name="experience" id="experience">
+                                    <option value="">请选择</option>
+                                    <option value="不限">不限</option>
+                                    <option value="应届毕业生">应届毕业生</option>
+                                    <option value="1年以下">1年以下</option>
+                                    <option value="1-3年">1-3年</option>
+                                    <option value="3-5年">3年以上</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">学历要求</label>
+                            <div class="layui-input-inline">
+                                <select name="education" id="education">
+                                    <option value="">请选择</option>
+                                    <option value="不限">不限</option>
+                                    <option value="大专">大专</option>
+                                    <option value="本科">本科</option>
+                                    <option value="硕士">硕士</option>
+                                    <option value="博士">博士</option>
+                                </select>
+                            </div>
+                        </div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">工作城市</label>
+							<div class="layui-input-inline">
+                                <select name="paddress" id="paddress" >
+                                    <option value="">请选择</option>
+                                    <option value="全国">全国</option>
+                                    <option value="北京">北京</option>
+                                    <option value="上海">上海</option>
+                                    <option value="成都">成都</option>
+                                </select>
+							</div>
+						</div>
+
+
+                        <div class="layui-form-item">
+                        <label class="layui-form-label">详细地址</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="address" id="address"  placeholder="请输入:" autocomplete="off" class="layui-input">
+                        </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email" id="email"  placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <input type="hidden" style="height:100px;">
+                        </div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">职位描述</label>
+							<div class="layui-input-block" >
+                                <div id="editor"></div>
+                            </div>
+						</div>
+
+                        <script type="text/javascript" src="/wangEditor.min.js"></script>
+						<div class="layui-form-item" style="text-align:center;">
+							<input class="layui-btn layui-btn-warm" lay-filter="*" type="button" value="提交" lay-submit />
+						</div>
+					</form>
+                </dd>
+            </dl>
+        </div><!-- end .content -->
+        <style>
+            .jiathis_style_32x32 .jiathis_txt {
+                font-size: 14px !important;
+                text-decoration: underline !important;
+                padding-left: 0 !important;
+            }
+
+            .jiathis_style_32x32 .jiathis_separator {
+                margin: 0 !important;
+                line-height: 22px !important;
+            }
+
+            .jiathis_style_32x32 .jtico {
+                height: auto !important;
+                background: none;
+                line-height: 22px !important;
+                padding-left: 0 !important;
+            }
+        </style>
+        <script charset="utf-8" src="/style/js/jia.js" type="text/javascript"></script>
+        <div class="clear"></div>
+        <input type="hidden" value="e0b2bdfab8ab466cb973d5ee5acc6adb" id="resubmitToken">
+        <a rel="nofollow" title="回到顶部" id="backtop"></a>
+    </div><!-- end #container -->
+</div><!-- end #body -->
+<div id="footer">
+    <div class="wrapper">
+        <a rel="nofollow" target="_blank" href="about.html">联系我们</a>
+        <a target="_blank" href="http://www.lagou.com/af/zhaopin.html">互联网公司导航</a>
+        <a rel="nofollow" target="_blank" href="http://e.weibo.com/lagou720">微博</a>
+        <a rel="nofollow" href="javascript:void(0)" class="footer_qr">微信<i></i></a>
+        <div class="copyright">&copy;2018-2019 Lagou <a
+                href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action"
+                target="_blank">京ICP备14023790号-2</a></div>
+    </div>
+</div>
+
+<script src="/style/js/core.min.js" type="text/javascript"></script>
+<script src="/style/js/popup.min.js" type="text/javascript"></script>
+<script src="/layui/layui.js"></script>
+
+<script>
+
+    function repwd(){
+        layui.use(['table','util','form'], function(){
+            var table = layui.table,
+                util=layui.util,
+                form=layui.form;
+            layer.open({
+                type: 2,
+                title: '修改密码',
+                maxmin: true,
+                area: ['850px', '500px'],
+                content: '/api/company/repwdview' //这里content是一个普通的String
+            });
+        });
+    }
+    //监听省级下拉框事件
+    layui.use(['form', 'upload'], function () {
+
+		var form = layui.form,
+		upload = layui.upload;
+        form.on('select(c1)', function(data){
+            if(data.value == '技术'){
+                $("#cname").empty();
+                $("#cname").append(
+                    "<option value='Java'>Java</option>" +
+                    "<option value='PHP'>PHP</option>" +
+                    "<option value='C++'>C++</option>" +
+                    "<option value='区块链'>区块链</option>" +
+                    "<option value='Hadoop'>Hadoop</option>" +
+                    "<option value='iOS'>iOS</option>" +
+                    "<option value='搜索算法'>搜索算法</option>" +
+                    "<option value='VB'>VB</option>" +
+                    "<option value='Node.js'>Node.js</option>" +
+                    "<option value='数据挖掘'>数据挖掘</option>" +
+                    "<option value='Perl'>Perl</option>" +
+                    "<option value='Ruby'>Ruby</option>");
+                form.render();
+            }
+            if(data.value == '产品'){
+                $("#cname").empty();
+                $("#cname").append(
+                    "<option value='产品经理'>产品经理</option>" +
+                    "<option value='网页产品经理'>网页产品经理</option>" +
+                    "<option value='移动产品经理'>移动产品经理</option>" +
+                    "<option value='产品助理'>产品助理</option>" +
+                    "<option value='数据产品经理'>数据产品经理</option>" +
+                    "<option value='游戏策划'>游戏策划</option>");
+                form.render();
+            }
+            if(data.value == '设计'){
+                $("#cname").empty();
+                $("#cname").append(
+                    "<option value='UI设计师'>UI设计师</option>" +
+                    "<option value='广告设计师'>广告设计师</option>" +
+                    "<option value='网页设计师'>网页设计师</option>" +
+                    "<option value='App设计师'>App设计师</option>" +
+                    "<option value='平面设计师'>平面设计师</option>" +
+                    "<option value='Flash设计师'>Flash设计师</option>");
+                form.render();
+            }
+            if(data.value == '市场&销售'){
+                $("#cname").empty();
+                $("#cname").append(
+                    "<option value='市场营销'>市场营销</option>" +
+                    "<option value='市场推广'>市场推广</option>" +
+                    "<option value='活动策划'>活动策划</option>" +
+                    "<option value='市场顾问'>市场顾问</option>" +
+                    "<option value='网络营销'>网络营销</option>" +
+                    "<option value='销售经理'>销售经理</option>");
+                form.render();
+            }
+            if(data.value == '职能'){
+                $("#cname").empty();
+                $("#cname").append(
+                    "<option value='HR'>HR</option>" +
+                    "<option value='行政'>行政</option>" +
+                    "<option value='财务'>财务</option>" +
+                    "<option value='审计'>审计</option>" +
+                    "<option value='助理'>助理</option>" +
+                    "<option value='前台'>前台</option>" +
+                    "<option value='总助'>总助</option>" +
+                    "<option value='文秘'>文秘</option>" +
+                    "<option value='会计'>会计</option>");
+                form.render();
+            }
+        });
+
+        //文本编辑器
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+        editor.customConfig.menus = [
+            'head',  // 标题
+            'bold',  // 粗体
+            'fontSize',  // 字号
+            'fontName',  // 字体
+            'italic',  // 斜体
+            'underline',  // 下划线
+            'strikeThrough',  // 删除线
+            'foreColor',  // 文字颜色
+            'backColor',  // 背景颜色
+            'link',  // 插入链接
+            'list',  // 列表
+            'justify',  // 对齐方式
+            'quote',  // 引用
+            'undo',  // 撤销
+            'redo'  // 重复
+        ]
+        editor.create()
+
+		form.on('submit(*)', function(data){
+			var user=data.field;
+            user.description = editor.txt.html();
+			var userInfo=JSON.stringify(user);
+			console.log(userInfo);
+			$.ajax({
+				url: '/api/company/savedetil',
+				contentType : "application/json;charset=UTF-8",//发送数据的格式
+				data:userInfo,
+				type: 'POST',
+				dataType: 'json',
+				success: function (data) {
+					if(data=="1"){
+						layer.msg("添加成功！");
+					}else if(data=="0"){
+                        layer.msg("未审核！");
+                    }else if(data=="2"){
+                        layer.msg("审核未通过，请检查公司信息！");
+                    }else if(data=="3"){
+                        layer.msg("请填写发布职位信息！");
+                    }
+				}
+			});
+
+			return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+		});
+
+	});
+
+
+</script>
+</body>
+</html>

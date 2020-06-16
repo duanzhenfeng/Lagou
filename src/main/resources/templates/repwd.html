@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <style type="text/css">
+        .layui-form-item{
+            margin-left:50px;
+        }
+    </style>
+    <title>修改密码</title>
+</head>
+<body>
+<form class="layui-form layui-form-pane" action="">
+    <div class="layui-form-item" style="margin-top:20px;">
+        <label class="layui-form-label">旧密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="olderpwd" id="olderpwd" placeholder="请输入" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">新密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="newpwd" id="newpwd"  placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item" style="text-align:center;">
+        <input class="layui-btn layui-btn-warm" lay-filter="*" type="button" value="提交" lay-submit />
+    </div>
+
+</form>
+<script src="/layui/layui.js"></script>
+<script src="/jquery.js"></script>
+<script type="text/javascript">
+    layui.use(['form'], function(){
+        var form=layui.form;
+        //监听表单提交事件
+        form.on('submit(*)', function(data){
+            var good=data.field;
+            var goods=JSON.stringify(good);
+            $.ajax({
+                url: '/api/company/repwd',
+                contentType : "application/json;charset=UTF-8",//发送数据的格式
+                data:goods,
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    if(data=="1"){
+                        layer.msg("修改成功！");
+                    }else{
+                        layer.msg("旧密码错误！");
+                    }
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+</script>
+</body>
+</html>
